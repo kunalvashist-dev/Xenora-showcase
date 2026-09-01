@@ -56,6 +56,26 @@ Unlike conventional conversational wrappers, Xenora maintains active spatial awa
 
 ---
 
+## 🎬 Core Features & Live Demonstrations
+
+### 1. Zero-Console Background Daemon & Offline Wake-Word Activation
+
+Xenora operates as a persistent, low-overhead background service managed via `pythonw.exe`. The system remains completely dormant without polling cloud resources until armed.
+
+<div align="center">
+  <img src="assets/xenora_wake.gif" alt="Xenora Wake-Word Launch Demo" width="750"/>
+  <br/>
+  <i>Real-time execution: Global hotkey hook arming the Vosk speech recognizer followed by offline wake-word activation.</i>
+</div>
+
+#### How It Works:
+1. [cite_start]**Low-Level Hotkey Hook (`Ctrl + Shift + X`):** A lightweight background listener intercepts the system-level hotkey [cite: 3, 42][cite_start], activating the audio stream and triggering a hardware confirmation tone via `winsound`[cite: 18, 37].
+2. [cite_start]**On-Device Keyword Spotting:** Speech input routes directly to a local, offline Vosk Kaldi recognizer running constrained phonetic grammar rules [cite: 26] [cite_start](eliminating cloud latency, token costs, and dictation ambiguities [cite: 25]).
+3. [cite_start]**Suppressed Process Spawning:** Upon detecting the `"Xenora"` trigger [cite: 30][cite_start], the listener unhooks the global keybind [cite: 31] [cite_start]and spawns the Electron interface using native `SW_HIDE` / `CREATE_NO_WINDOW` flags to suppress visible terminal windows[cite: 35].
+4. **Stateful Initialization:** The Flask-SocketIO backend establishes the active connection, initializes the interactive floating orb, and synthesizes a context-aware greeting using Kokoro neural TTS based on the time of day.
+
+---
+
 ## 🏛️ System Architecture
 
 ```text
