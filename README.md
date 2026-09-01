@@ -79,7 +79,7 @@ Xenora operates as a persistent, low-overhead background service managed via `py
 Unlike standard single-turn assistants, Xenora resolves complex compound directives containing multiple disjointed intents (e.g., local process execution, web navigation, and background media scraping with scoped qualifiers) within a single prompt.
 
 <div align="center">
-  <img src="multi_intent_orchestration.gif" alt="Xenora Multi-Intent Parallel Orchestration" width="750"/>
+  <img src="assets/multi_intent_orchestration.gif" alt="Xenora Multi-Intent Parallel Orchestration" width="750"/>
   <br/>
   <i>Compound directive execution: Launching Opera GX, navigating to the official YouTube track, and asynchronously extracting the 8D audio remix to local storage in parallel.</i>
 </div>
