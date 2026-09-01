@@ -31,7 +31,7 @@ Unlike conventional conversational AI wrappers, Xenora maintains an active spati
 * **Multimodal Screen Vision & Ambient Tracking:** Native Windows GDI/`PrintWindow` capture enables asynchronous visual parsing of background windows without interrupting the user's active foreground tasks.
 * **Hybrid Cloud/Edge Inference Engine:** Adaptive query routing powered by high-throughput cloud inference (Groq) with seamless zero-downtime failover to quantized local models (DeepSeek-R1 via Ollama) during network loss.
 * **High-Throughput Desktop Orchestration:** Translates complex natural-language directives into parallel OS process launches (e.g., deploying browser workspaces, communication channels, media streams, and games simultaneously in under 5 seconds).
-* **🎙️ Low-Latency Emotion-Aware Voice Engine:** On-device neural speech synthesis powered by Kokoro ONNX, featuring runtime sentiment detection to dynamically adapt cadence, tone, and prosody.
+* **Low-Latency Emotion-Aware Voice Engine:** On-device neural speech synthesis powered by Kokoro ONNX, featuring runtime sentiment detection to dynamically adapt cadence, tone, and prosody.
 * **Non-Blocking Real-Time Architecture:** Asynchronous communication bridge using Flask and Socket.IO to stream real-time audio buffers, system telemetry, active watch-tasks, and visual feeds to an Electron/Web frontend.
 * **Persistent State & Semantic Memory Engine:** Multi-tiered storage tracking user preferences, interaction intervals, and session summaries to continuously ground conversational context.
 
@@ -60,7 +60,7 @@ Unlike conventional conversational AI wrappers, Xenora maintains an active spati
 │ Primary: Groq    │           │ PrintWindow GDI  │            │ Win32 / ctypes    │
 │ Fallback: Ollama │           │ Gemini Vision    │            │ Process Spawning  │
 │ Semantic Memory  │           │ Pixel-Diff Gate  │            │ Sockets / Flask   │
-└────────┬─────────┘           └────────┬─────────┘            └─────────┬─────────┘
+└────────┬─────────┘           └─────────┬────────┘            └─────────┬─────────┘
          │                               │                               │
          └───────────────────────────────┼───────────────────────────────┘
                                          │
