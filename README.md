@@ -74,6 +74,21 @@ Xenora operates as a persistent, low-overhead background service managed via `py
 3. **Suppressed Process Spawning:** Upon detecting the `"Xenora"` trigger, the listener unhooks the global keybind and spawns the Electron interface using native `SW_HIDE` / `CREATE_NO_WINDOW` flags to suppress visible terminal windows.
 4. **Stateful Initialization:** The Flask-SocketIO backend establishes the active connection, initializes the interactive floating orb, and synthesizes a context-aware greeting using Kokoro neural TTS.
 
+### 2. Multi-Action Intent Resolution & Parallel Execution
+
+Unlike standard single-turn assistants, Xenora resolves complex compound directives containing multiple disjointed intents (e.g., local process execution, web navigation, and background media scraping with scoped qualifiers) within a single prompt.
+
+<div align="center">
+  <img src="multi_intent_orchestration.gif" alt="Xenora Multi-Intent Parallel Orchestration" width="750"/>
+  <br/>
+  <i>Compound directive execution: Launching Opera GX, navigating to the official YouTube track, and asynchronously extracting the 8D audio remix to local storage in parallel.</i>
+</div>
+
+#### How It Works:
+1. **Single-Pass Disambiguation & Context Scoping:** The unified intent router breaks down complex multi-clause sentences, ensuring specific modifiers (such as "8D Audio") apply strictly to the download pipeline rather than contaminating the standard browser playback target.
+2. **Parallel Process Spawning:** Application paths and URLs execute in isolated asynchronous threads, deploying desktop software and opening targeted media tabs in under 5 seconds.
+3. **Background Media Pipeline:** The downloader runs an asynchronous `yt-dlp` audio extraction routine in the background, writing the processed MP3 directly to disk while telemetry streams back to the Electron HUD.
+
 ---
 
 ## 🏛️ System Architecture
