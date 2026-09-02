@@ -89,6 +89,21 @@ Unlike standard single-turn assistants, Xenora resolves complex compound directi
 2. **Parallel Process Spawning:** Application paths and URLs execute in isolated asynchronous threads, deploying desktop software and opening targeted media tabs in under 5 seconds.
 3. **Background Media Pipeline:** The downloader runs an asynchronous `yt-dlp` audio extraction routine in the background, writing the processed MP3 directly to disk while telemetry streams back to the Electron HUD.
 
+### 3. Geospatial Intelligence & Live Global Trend Aggregation
+
+Xenora integrates an automated intelligence ingestion engine that parses real-time world events, financial telemetry, and trending topics into an interactive geospatial command layer.
+
+<div align="center">
+  <img src="assets/geospatial_intel_map.gif" alt="Xenora Geospatial Intelligence Terminal" width="750"/>
+  <br/>
+  <i>Dynamic geospatial mapping: Automated multi-source RSS intelligence aggregation, market telemetry, and interactive threat/trend hotspots.</i>
+</div>
+
+#### How It Works:
+1. **Asynchronous Feed Ingestion:** A persistent background thread aggregates real-time data streams across RSS networks, financial market indices, and regional trend monitors without impacting main runtime execution.
+2. **Geospatial Entity Resolution:** Ingested articles and updates are geocoded to specific coordinates and categorized by intensity (e.g., diplomatic developments, economic reports, tech leaks), dynamically rendering pulse vectors across a custom vector map engine.
+3. **Interactive Telemetry Drilldown:** The Electron HUD provides seamless switching between conversational mode and the intelligence canvas, allowing click-to-expand analysis on live intelligence cards while maintaining streaming audio briefs in the background.
+
 ---
 
 ## 🏛️ System Architecture
