@@ -141,7 +141,7 @@ Xenora integrates an automated intelligence ingestion engine that parses real-ti
 │ Primary: Groq    │           │ PrintWindow GDI  │            │ Win32 / ctypes    │
 │ Fallback: Ollama │           │ Gemini Vision    │            │ Process Spawning  │
 │ Semantic Memory  │           │ Pixel-Diff Gate  │            │ Sockets / Flask   │
-└────────┬─────────┘           └────────┬─────────┘            └─────────┬─────────┘
+└────────┬─────────┘           └─────────┬────────┘            └─────────┬─────────┘
          │                               │                               │
          └───────────────────────────────┼───────────────────────────────┘
                                          │
@@ -158,14 +158,17 @@ Xenora integrates an automated intelligence ingestion engine that parses real-ti
 
 ### 1. Multi-Target Batching for Token Optimization
 **The Challenge:** Polling independent background tasks (such as friend presence across games or download progress bars) scales token consumption linearly with each new target.
+
 **The Solution:** Engineered a group-coordinator thread that crops localized dynamic regions (such as chat panes or status docks). It prompts the vision model to return structured JSON evaluating all monitored targets in a single request, bounding API usage to scale with the number of *windows* rather than the number of *targets*.
 
 ### 2. Eliminating Voice-Induced Execution Latency
 **The Challenge:** Inline neural speech synthesis and character-by-character text streaming blocked the command execution thread, making the assistant unresponsive during long verbal replies.
+
 **The Solution:** Decoupled synthesis, playback, and character streaming into an asynchronous, queue-driven worker thread. Commands complete instantly while speech streams sequentially in the background.
 
 ### 3. Fault-Tolerant Hybrid Routing & Hardware Awareness
 **The Challenge:** Standard software ACPI suspension commands (`SetSuspendState`) frequently produce silent failures on modern laptop platforms (Modern Standby/S0 states), while intermittent network drops interrupt cloud LLM threads.
+
 **The Solution:** Built defensive hardware-interception layers to guide power states reliably. Paired this with a background connection monitor that automatically switches runtime context to local Ollama models whenever latency spikes or internet access drops.
 
 ---
