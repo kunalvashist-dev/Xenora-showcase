@@ -1,6 +1,6 @@
 <div align="center">
 
-# ⚡ Xenora
+# Xenora
 ### eXecution Engine for Navigating Operations & Responsive Assistance
 
 [![Python](https://img.shields.io/badge/Python-3.12+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
@@ -32,28 +32,28 @@ Unlike conventional conversational wrappers, Xenora maintains active spatial awa
 
 ## ✨ System Capabilities
 
-### 🖥️ 1. Multi-Window Interface & HUD
+### 1. Multi-Window Interface & HUD
 * **Ambient Floating Orb:** Native-draggable widget featuring real-time visual telemetry for system states.
 * **Radial Geometric Pie Menu:** Custom trigonometric overlay with mathematical hit detection.
 * **Geospatial Terminal:** Real-time world map layer (MapLibre/Leaflet) tracking geopolitical hotspots.
 
-### 👂 2. Standalone Offline Wake-Word
+### 2. Standalone Offline Wake-Word
 * **Zero-Console Daemon:** Runs silently via `pythonw.exe`, continuously listening using on-device Kaldi/Vosk with zero cloud egress.
 * **Constrained Grammar Decoding:** Employs narrow phonetic lookup sets to spot atypical vocal triggers accurately.
 
-### 👁️ 3. Ambient Background Vision
+### 3. Ambient Background Vision
 * **Zero-Impact Window Perception:** Captures background surfaces using native Win32 `PrintWindow` APIs without shifting user focus.
 * **Multi-Target Token Optimization:** Batches monitored targets within a single dynamically cropped region for structured JSON verdicts.
 
-### 🧠 4. Unified Intent Routing
+### 4. Unified Intent Routing
 * **Single-Pass Disambiguation:** Resolves complex, multi-action directives with full conversational and visual context preservation.
 * **Compound Execution:** Decomposes conditional requests into sequential primitive steps with deterministic timeouts.
 
-### ⚡ 5. Parallel Desktop Orchestration
+### 5. Parallel Desktop Orchestration
 * **Multi-App Deployment:** Launches multi-application workspaces in parallel in under 5 seconds.
 * **Self-Learning App Locator:** Traverses Start Menu structures and local application trees to locate unknown binaries dynamically.
 
-### 🎙️ 6. Asynchronous Audio Synthesis
+### 6. Asynchronous Audio Synthesis
 * **Non-Blocking Neural TTS:** On-device neural speech generation via Kokoro ONNX.
 * **Dedicated Worker Queue:** Audio processing is entirely decoupled from the main thread to prevent UI freezing or execution latency.
 
