@@ -22,30 +22,46 @@
 
 ## 📌 Overview
 
-> **Xenora is a high-throughput, context-aware personal desktop intelligence system designed to eliminate operational friction from everyday computing.** >
-> Developed across eight months of iterative systems engineering, Xenora unifies natural-language intent parsing with low-level Windows APIs, persistent background screen perception, on-device neural voice synthesis, and multi-process execution pipelines. Unlike conventional conversational wrappers, Xenora maintains active spatial awareness of desktop windows, tracks continuous state transitions, evaluates compound conditional workflows, and interfaces via a multi-window Electron HUD.
+**Xenora is a high-throughput, context-aware personal desktop intelligence system designed to eliminate operational friction from everyday computing.** 
+
+Developed across eight months of iterative systems engineering, Xenora unifies natural-language intent parsing with low-level Windows APIs, persistent background screen perception, on-device neural voice synthesis, and multi-process execution pipelines. 
+
+Unlike conventional conversational wrappers, Xenora maintains active spatial awareness of desktop windows, tracks continuous state transitions, evaluates compound conditional workflows, and interfaces via a multi-window Electron HUD.
 
 ---
 
 ## ✨ System Capabilities
 
-| 🖥️ 1. Multi-Window Interface & HUD | 👂 2. Standalone Offline Wake-Word |
-| :--- | :--- |
-| **Ambient Floating Orb:** Native-draggable widget featuring real-time visual telemetry for system states.<br><br>**Radial Geometric Pie Menu:** Custom trigonometric overlay with mathematical hit detection.<br><br>**Geospatial Terminal:** Real-time world map layer (MapLibre/Leaflet) tracking geopolitical hotspots. | **Zero-Console Daemon:** Runs silently via `pythonw.exe`, continuously listening using on-device Kaldi/Vosk with zero cloud egress.<br><br>**Constrained Grammar Decoding:** Employs narrow phonetic lookup sets to spot atypical vocal triggers accurately. |
+### 🖥️ 1. Multi-Window Interface & HUD
+* **Ambient Floating Orb:** Native-draggable widget featuring real-time visual telemetry for system states.
+* **Radial Geometric Pie Menu:** Custom trigonometric overlay with mathematical hit detection.
+* **Geospatial Terminal:** Real-time world map layer (MapLibre/Leaflet) tracking geopolitical hotspots.
 
-| 👁️ 3. Ambient Background Vision | 🧠 4. Unified Intent Routing |
-| :--- | :--- |
-| **Zero-Impact Window Perception:** Captures background surfaces using native Win32 `PrintWindow` APIs without shifting user focus.<br><br>**Multi-Target Token Optimization:** Batches monitored targets within a single dynamically cropped region for structured JSON verdicts. | **Single-Pass Disambiguation:** Resolves complex, multi-action directives with full conversational and visual context preservation.<br><br>**Compound Execution:** Decomposes conditional requests into sequential primitive steps with deterministic timeouts. |
+### 👂 2. Standalone Offline Wake-Word
+* **Zero-Console Daemon:** Runs silently via `pythonw.exe`, continuously listening using on-device Kaldi/Vosk with zero cloud egress.
+* **Constrained Grammar Decoding:** Employs narrow phonetic lookup sets to spot atypical vocal triggers accurately.
 
-| ⚡ 5. Parallel Desktop Orchestration | 🎙️ 6. Asynchronous Audio Synthesis |
-| :--- | :--- |
-| **Multi-App Deployment:** Launches multi-application workspaces in parallel in under 5 seconds.<br><br>**Self-Learning App Locator:** Traverses Start Menu structures and local application trees to locate unknown binaries dynamically. | **Non-Blocking Neural TTS:** On-device neural speech generation via Kokoro ONNX.<br><br>**Dedicated Worker Queue:** Audio processing is entirely decoupled from the main thread to prevent UI freezing or execution latency. |
+### 👁️ 3. Ambient Background Vision
+* **Zero-Impact Window Perception:** Captures background surfaces using native Win32 `PrintWindow` APIs without shifting user focus.
+* **Multi-Target Token Optimization:** Batches monitored targets within a single dynamically cropped region for structured JSON verdicts.
+
+### 🧠 4. Unified Intent Routing
+* **Single-Pass Disambiguation:** Resolves complex, multi-action directives with full conversational and visual context preservation.
+* **Compound Execution:** Decomposes conditional requests into sequential primitive steps with deterministic timeouts.
+
+### ⚡ 5. Parallel Desktop Orchestration
+* **Multi-App Deployment:** Launches multi-application workspaces in parallel in under 5 seconds.
+* **Self-Learning App Locator:** Traverses Start Menu structures and local application trees to locate unknown binaries dynamically.
+
+### 🎙️ 6. Asynchronous Audio Synthesis
+* **Non-Blocking Neural TTS:** On-device neural speech generation via Kokoro ONNX.
+* **Dedicated Worker Queue:** Audio processing is entirely decoupled from the main thread to prevent UI freezing or execution latency.
 
 ---
 
 ## 🎬 Core Features & Live Demonstrations
 
-### 1. Zero-Console Background Daemon & Offline Wake-Word Activation
+### 1. Zero-Console Background Daemon & Offline Wake-Word
 Xenora operates as a persistent, low-overhead background service managed via `pythonw.exe`. The system remains completely dormant without polling cloud resources until armed.
 
 <div align="center">
@@ -53,18 +69,14 @@ Xenora operates as a persistent, low-overhead background service managed via `py
   <br/>
   <i>Real-time execution: Global hotkey hook arming the Vosk speech recognizer followed by offline wake-word activation.</i>
 </div>
-
-<details>
-<summary><b>🛠️ Click to expand: How it works under the hood</b></summary>
 <br>
 
-1. **Low-Level Hotkey Hook (`Ctrl + Shift + X`):** A lightweight background listener intercepts the system-level hotkey, activating the audio stream and triggering a hardware confirmation tone via `winsound`.
-2. **On-Device Keyword Spotting:** Speech input routes directly to a local, offline Vosk Kaldi recognizer running constrained phonetic grammar rules (eliminating cloud latency, token costs, and dictation ambiguities).
-3. **Suppressed Process Spawning:** Upon detecting the `"Xenora"` trigger, the listener unhooks the global keybind and spawns the Electron interface using native `SW_HIDE` / `CREATE_NO_WINDOW` flags to suppress visible terminal windows.
-4. **Stateful Initialization:** The Flask-SocketIO backend establishes the active connection, initializes the interactive floating orb, and synthesizes a context-aware greeting using Kokoro neural TTS.
-</details>
+> **🛠️ Under the Hood:**
+> * **Low-Level Hotkey Hook (`Ctrl + Shift + X`):** A lightweight background listener intercepts the system-level hotkey, activating the audio stream and triggering a hardware confirmation tone via `winsound`.
+> * **On-Device Keyword Spotting:** Speech input routes directly to a local, offline Vosk Kaldi recognizer running constrained phonetic grammar rules.
+> * **Suppressed Process Spawning:** Upon detecting the `"Xenora"` trigger, the listener unhooks the global keybind and spawns the Electron interface using native `SW_HIDE` / `CREATE_NO_WINDOW` flags.
 
-<br>
+---
 
 ### 2. Multi-Action Intent Resolution & Parallel Execution
 Unlike standard single-turn assistants, Xenora resolves complex compound directives containing multiple disjointed intents within a single prompt.
@@ -74,17 +86,14 @@ Unlike standard single-turn assistants, Xenora resolves complex compound directi
   <br/>
   <i>Compound directive execution: Launching Opera GX, navigating to the official YouTube track, and asynchronously extracting the 8D audio remix to local storage in parallel.</i>
 </div>
-
-<details>
-<summary><b>🛠️ Click to expand: How it works under the hood</b></summary>
 <br>
 
-1. **Single-Pass Disambiguation & Context Scoping:** The unified intent router breaks down complex multi-clause sentences, ensuring specific modifiers (such as "8D Audio") apply strictly to the download pipeline rather than contaminating the standard browser playback target.
-2. **Parallel Process Spawning:** Application paths and URLs execute in isolated asynchronous threads, deploying desktop software and opening targeted media tabs in under 5 seconds.
-3. **Background Media Pipeline:** The downloader runs an asynchronous `yt-dlp` audio extraction routine in the background, writing the processed MP3 directly to disk while telemetry streams back to the Electron HUD.
-</details>
+> **🛠️ Under the Hood:**
+> * **Single-Pass Disambiguation:** The unified intent router breaks down complex multi-clause sentences, ensuring specific modifiers apply strictly to their designated targets.
+> * **Parallel Process Spawning:** Application paths and URLs execute in isolated asynchronous threads, deploying desktop software and opening targeted media tabs simultaneously.
+> * **Background Media Pipeline:** The downloader runs an asynchronous `yt-dlp` audio extraction routine in the background, writing the MP3 to disk while telemetry streams to the HUD.
 
-<br>
+---
 
 ### 3. Geospatial Intelligence & Live Global Trend Aggregation
 Xenora integrates an automated intelligence ingestion engine that parses real-time world events, financial telemetry, and trending topics into an interactive geospatial command layer.
@@ -94,15 +103,12 @@ Xenora integrates an automated intelligence ingestion engine that parses real-ti
   <br/>
   <i>Dynamic geospatial mapping: Automated multi-source RSS intelligence aggregation, market telemetry, and interactive threat/trend hotspots.</i>
 </div>
-
-<details>
-<summary><b>🛠️ Click to expand: How it works under the hood</b></summary>
 <br>
 
-1. **Asynchronous Feed Ingestion:** A persistent background thread aggregates real-time data streams across RSS networks, financial market indices, and regional trend monitors without impacting main runtime execution.
-2. **Geospatial Entity Resolution:** Ingested articles and updates are geocoded to specific coordinates and categorized by intensity (e.g., diplomatic developments, economic reports, tech leaks), dynamically rendering pulse vectors across a custom vector map engine.
-3. **Interactive Telemetry Drilldown:** The Electron HUD provides seamless switching between conversational mode and the intelligence canvas, allowing click-to-expand analysis on live intelligence cards while maintaining streaming audio briefs in the background.
-</details>
+> **🛠️ Under the Hood:**
+> * **Asynchronous Feed Ingestion:** A persistent background thread aggregates real-time data streams across RSS networks and financial market indices without impacting main runtime execution.
+> * **Geospatial Entity Resolution:** Ingested articles and updates are geocoded to specific coordinates and dynamically rendered as pulse vectors across a custom vector map engine.
+> * **Interactive Telemetry Drilldown:** Seamless switching between conversational mode and the intelligence canvas allows click-to-expand analysis on live intelligence cards.
 
 ---
 
@@ -151,29 +157,27 @@ Xenora integrates an automated intelligence ingestion engine that parses real-ti
 ## 🛠️ Key Engineering Challenges & Solutions
 
 ### 1. Multi-Target Batching for Token Optimization
-* **The Challenge:** Polling independent background tasks (such as friend presence across games or download progress bars) scales token consumption linearly with each new target.
-> **The Solution:** Engineered a group-coordinator thread that crops localized dynamic regions (such as chat panes or status docks). It prompts the vision model to return structured JSON evaluating all monitored targets in a single request, bounding API usage to scale with the number of *windows* rather than the number of *targets*.
+**The Challenge:** Polling independent background tasks (such as friend presence across games or download progress bars) scales token consumption linearly with each new target.
+**The Solution:** Engineered a group-coordinator thread that crops localized dynamic regions (such as chat panes or status docks). It prompts the vision model to return structured JSON evaluating all monitored targets in a single request, bounding API usage to scale with the number of *windows* rather than the number of *targets*.
 
 ### 2. Eliminating Voice-Induced Execution Latency
-* **The Challenge:** Inline neural speech synthesis and character-by-character text streaming blocked the command execution thread, making the assistant unresponsive during long verbal replies.
-> **The Solution:** Decoupled synthesis, playback, and character streaming into an asynchronous, queue-driven worker thread. Commands complete instantly while speech streams sequentially in the background.
+**The Challenge:** Inline neural speech synthesis and character-by-character text streaming blocked the command execution thread, making the assistant unresponsive during long verbal replies.
+**The Solution:** Decoupled synthesis, playback, and character streaming into an asynchronous, queue-driven worker thread. Commands complete instantly while speech streams sequentially in the background.
 
 ### 3. Fault-Tolerant Hybrid Routing & Hardware Awareness
-* **The Challenge:** Standard software ACPI suspension commands (`SetSuspendState`) frequently produce silent failures on modern laptop platforms (Modern Standby/S0 states), while intermittent network drops interrupt cloud LLM threads.
-> **The Solution:** Built defensive hardware-interception layers to guide power states reliably. Paired this with a background connection monitor that automatically switches runtime context to local Ollama models whenever latency spikes or internet access drops.
+**The Challenge:** Standard software ACPI suspension commands (`SetSuspendState`) frequently produce silent failures on modern laptop platforms (Modern Standby/S0 states), while intermittent network drops interrupt cloud LLM threads.
+**The Solution:** Built defensive hardware-interception layers to guide power states reliably. Paired this with a background connection monitor that automatically switches runtime context to local Ollama models whenever latency spikes or internet access drops.
 
 ---
 
 ## 💻 Technology Stack
 
-| Layer | Technologies & Tools |
-| :--- | :--- |
-| **Frontend & UI** | Electron, HTML5/CSS3, MapLibre GL, Leaflet, Chart.js, Socket.IO Client |
-| **Backend Core** | Python 3.12, Flask, Flask-SocketIO, Multithreading (`threading`, `queue`) |
-| **LLM & Reasoning** | Groq API, Google Gemini Vision API, Ollama (DeepSeek-R1) |
-| **Voice & Speech** | Kokoro ONNX, Vosk Speech Recognition, SoundDevice, SoundFile |
-| **OS & Vision Capture** | Windows Win32 API (`pywin32`, `win32gui`, `ctypes`), PyAutoGUI, PIL |
-| **Web & Automation** | Selenium WebDriver, yt-dlp, Requests |
+* **Frontend & UI:** Electron, HTML5/CSS3, MapLibre GL, Leaflet, Chart.js, Socket.IO Client
+* **Backend Core:** Python 3.12, Flask, Flask-SocketIO, Multithreading (`threading`, `queue`)
+* **LLM & Reasoning:** Groq API, Google Gemini Vision API, Ollama (DeepSeek-R1)
+* **Voice & Speech:** Kokoro ONNX, Vosk Speech Recognition, SoundDevice, SoundFile
+* **OS & Vision Capture:** Windows Win32 API (`pywin32`, `win32gui`, `ctypes`), PyAutoGUI, PIL
+* **Web & Automation:** Selenium WebDriver, yt-dlp, Requests
 
 ---
 
@@ -187,6 +191,7 @@ The core execution source code, proprietary prompt schemas, and personal integra
 
 <div align="center">
 
-**Developed with precision by Kunal** *Showcasing local-first desktop autonomy and multimodal systems engineering.*
+**Developed with precision by Kunal**  
+*Showcasing local-first desktop autonomy and multimodal systems engineering.*
 
 </div>
